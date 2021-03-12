@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import { v4 as uuidv4 } from 'uuid';
 import InputHook from './InputHook';
 
@@ -12,7 +12,9 @@ const Languages = () => {
     ]);
     // const [name,setName] = useState("");
     const [name,setName,clearName] = InputHook("");
-    const [email,setEmail,clearEmail] = InputHook();
+    const [email,setEmail,clearEmail] = InputHook("");
+    const [count,setCount] = useState(0);
+
 
     // const inputHandle = (e) => {
     //     setName(e.target.value);
@@ -25,8 +27,12 @@ const Languages = () => {
         clearEmail("");
     }
     const id = uuidv4();
+    useEffect(()=>{
+        console.log("Use Effect method run!");
+    },[count])
     return (
         <div>
+            <h1>{count}</h1>
               <table className="table">
                   <thead className="bg-primary text-light">
                       <tr>
@@ -66,6 +72,9 @@ const Languages = () => {
             <input type="submit" className="btn btn-success"  value="Add Language"/>
               </div>
               </form>
+              <div className="form-group">
+                  <input type="submit" value="Count" className="btn btn-info" onClick={()=>setCount(count + 1)}/>
+              </div>
         </div>
     )
 }
