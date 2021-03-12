@@ -5,7 +5,7 @@ export default function Counter() {
 
     useEffect( () => {
         console.log( `The count is ${count}` );
-    } );
+    }, [] );
 
     return (
         <div>

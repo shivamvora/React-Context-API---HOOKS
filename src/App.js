@@ -4,6 +4,7 @@ import "bootswatch/dist/materia/bootstrap.min.css";
 import Languages from './components/Languages';
 import InputHook from './components/InputHook';
 import Counter from './components/useEffect/Counter';
+import Listen from './components/useEffect/Listen';
 
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
     <div className="container mt-5  ">
       <Languages/>
       <Counter/>
+      <Listen/>
     
     </div>
   );
