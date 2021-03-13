@@ -4,9 +4,18 @@ const Todo = () => {
     const [current, setCurrent] = useState( "" );
     const [items, setItems] = useState( [{}] );
 
+    const inputRef = useRef( null );
+
+    function removeItem( key ) {
+        const filterdItems = items.filter( item => item.key !== key );
+        setItems( filterdItems );
+    }
+
+
     function addToCurrent( e ) {
         if ( e.target.value !== "" ) {
             setCurrent( e.target.value );
+
         }
     }
     function addItems( e ) {
@@ -25,7 +34,7 @@ const Todo = () => {
 
                 {
                     items.map( item => (
-                        <li key={item.key}>{item.task}</li>
+                        <li key={item.key}>{item.task} <span onClick={() => removeItem( item.key )}> &times;</span></li>
                     ) )
                 }
 
@@ -38,7 +47,7 @@ const Todo = () => {
                         onChange={addToCurrent}
                     />
                 </div>
-                <input type="submit" value="Add" />
+                <input type="submit" value="Add" ref={inputRef} />
             </form>
         </div>
     )
